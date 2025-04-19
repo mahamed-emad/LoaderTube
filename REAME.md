@@ -83,5 +83,5 @@ Connect:
 
 ## 🛡 License
 
-This project not is open-source
+This project is open-source
 ```
