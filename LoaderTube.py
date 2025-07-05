@@ -156,7 +156,3 @@ while True:
         print(f"{Fore.CYAN}\nExiting Program... 👋")
         time.sleep(2.5)
         sys.exit()
-
-
-# أضيف أسمي كالناشر
-# pyinstaller --onefile --name "LoaderTube" --icon=icon.ico --add-binary "ffmpeg.exe;." --add-binary "ffprobe.exe;." LoaderTube.py
