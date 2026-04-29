@@ -27,11 +27,6 @@ It lets you download single videos or full playlists in various resolutions or c
 ```bash
 pip install yt_dlp colorama
 
-
-تمام، جهزت لك ملف `README.md` احترافي تقدر تحطه مباشرة في مشروعك على GitHub أو أي منصة نشر كـ open source.
-
-------------------------------------------------------------
-
 ## ⚙️ How to Use
 
 1. Clone the repo:
@@ -59,16 +54,6 @@ python loadertube.py
 
 ---
 
-
-## 📌 To-Do (Future Plans)
-
-- [ ] GUI version using Tkinter or PyQt
-- [ ] More format support (m4a, wav...)
-- [ ] Dark mode CLI
-- [ ] Download subtitles or thumbnails
-- [ ] URL validation and better error handling
-
----
 
 ## 👨‍💻 Author
 
