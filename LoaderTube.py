@@ -20,7 +20,7 @@ def clear_screen():
     system_name = platform.system().lower()
     os.system("cls" if system_name == "windows" else "clear")
     print(f"{Fore.BLUE}{"-"*30}")
-    print(f"{Fore.GREEN}{" "*6}Free Palestine") # 🇵🇸
+    print(f"{Fore.GREEN}{" "*6}Free Palestine")
     print(f"{Fore.RED}{" "*2}Dev By ❤️ Mahamed Emad")
     print(f"{Fore.BLUE}{"-"*30}\n")
 
@@ -80,15 +80,16 @@ def download_video():
 
     try:
         with yt_dlp.YoutubeDL(video_downloader_option) as ydl:
-            resolution_downloaded = None
- 
-            if "playlist?" not in url:
+            ydl.download([url])
 
-                if "list=" in url:
-                    url = url[:url.find("&list=")]
-                elif "?list=" in url:
-                    url = url[:url.find("?list=")]
-                ydl.download([url])
+            info = ydl.extract_info(url, download=False)
+            if info is not None: 
+                if resolution != "mp3" and 'height' in info and info['height'] is not None:
+                    resolution_downloaded = info['height']
+                elif resolution != "mp3" and 'requested_downloads' in info and info['requested_downloads']:
+                    info = ydl.extract_info(url, download=False)
+                    if info is not None and info['requested_downloads']:
+                            resolution_downloaded = info['requested_downloads'][0].get('height')
 
                 info = ydl.extract_info(url, download=False)
                 if resolution != "mp3" and 'height' in info and info['height'] is not None:
@@ -126,7 +127,7 @@ def download_video():
                 f"{len(info['entries'])} videos \"All Playlist\"" \
                 if len(info['entries']) == len(list(Range)) else list(Range)}\n")
 
-            for i in range(1, 5): print(f"   {Fore.GREEN}- Done {int((i/4)*100)}%✅" if i < 4 else f" ✅ Done {int((i/4)*100)}% ✅"); time.sleep(1)
+            for i in range(1, 5): print(f"\r   {Fore.GREEN}- Done {int((i/4)*100)}%✅" if i < 4 else f"\r ✅ Done {int((i/4)*100)}% ✅", end="" if i < 4 else "\n", flush=True); time.sleep(.5)
             print(f"{Fore.CYAN}\n >> ✅ Downloaded Successfully ✅ <<\n\n")
 
     except Exception as e:
